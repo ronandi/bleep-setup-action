@@ -15,6 +15,8 @@ async function downloadBleep(version: string): Promise<void> {
 
   if (process.platform === 'linux' && process.arch === 'x64') {
     unixLike(`${baseUrl}-x86_64-pc-linux.tar.gz`)
+  } else if (process.platform === 'linux' && process.arch === 'arm64') {
+    unixLike(`${baseUrl}-arm64-pc-linux.tar.gz`)
   } else if (process.platform === 'win32' && process.arch === 'x64') {
     const guid = await tc.downloadTool(`${baseUrl}-x86_64-pc-win32.zip`)
     const extracted = await tc.extractZip(guid)
